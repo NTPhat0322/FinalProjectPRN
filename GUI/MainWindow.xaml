@@ -1,0 +1,111 @@
+﻿<Window x:Class="GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2980b9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="HeaderStyle">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="SubHeaderStyle">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#555555"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="White" CornerRadius="5" Margin="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-90" 
+                              RenderingBias="Quality" ShadowDepth="2" 
+                              Opacity="0.2"/>
+        </Border.Effect>
+
+        <Grid Margin="30,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Welcome" Style="{StaticResource HeaderStyle}"/>
+                <TextBlock Text="Sign in to continue" Style="{StaticResource SubHeaderStyle}"/>
+            </StackPanel>
+
+            <!-- Login Form -->
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <!-- Email Field -->
+                <Label Content="Email" Target="{Binding ElementName=txtEmail}"/>
+                <TextBox x:Name="txtEmail" />
+
+                <!-- Password Field -->
+                <Label Content="Password" Target="{Binding ElementName=txtPassword}"/>
+                <PasswordBox x:Name="txtPassword" />
+
+                <!-- Forgot Password -->
+                <TextBlock HorizontalAlignment="Right" Margin="0,-10,0,15">
+                    <Hyperlink TextDecorations="None">Forgot Password?</Hyperlink>
+                </TextBlock>
+
+                <!-- Login Button -->
+                <Button x:Name="btnLogin" Content="Login" Click="BtnLogin_Click"/>
+            </StackPanel>
+
+            <!-- Footer -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Don't have an account? " VerticalAlignment="Center"/>
+                <TextBlock VerticalAlignment="Center">
+                    <Hyperlink TextDecorations="None" Click="SignUp_Click">Sign up</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

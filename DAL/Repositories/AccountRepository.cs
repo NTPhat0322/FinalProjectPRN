@@ -29,11 +29,11 @@ namespace DAL.Repositories
                 .ToList();
         }
 
-        public void Add(Account account)
+        public bool Add(Account account)
         {
 
             _context.Accounts.Add(account);
-            _context.SaveChanges();
+            return _context.SaveChanges() > 0;
         }
 
         public Account? GetById(int id)
@@ -54,6 +54,7 @@ namespace DAL.Repositories
             tmp.Gender = account.Gender;
             tmp.IsDeleted = account.IsDeleted;
             _context.Accounts.Update(tmp);
+            _context.SaveChanges();
             return true;
         }
 

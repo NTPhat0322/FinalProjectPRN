@@ -1,11 +1,11 @@
-﻿<Window x:Class="GUI.MainWindow"
+﻿<Window x:Class="GUI.SigningUpWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="400"
+        Title="Create Account" Height="661" Width="500"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Window.Resources>
@@ -23,6 +23,27 @@
             <Setter Property="Margin" Value="0,5,0,15"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="0,5,15,5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
         <Style TargetType="Button">
@@ -76,32 +97,45 @@
 
             <!-- Header -->
             <StackPanel Grid.Row="0">
-                <TextBlock Text="Xin Chào" Style="{StaticResource HeaderStyle}"/>
-                <TextBlock Text="Đăng nhập để tiếp tục" Style="{StaticResource SubHeaderStyle}"/>
+                <TextBlock Text="Tạo tài khoản" Style="{StaticResource HeaderStyle}"/>
+                <TextBlock Text="Điền các thông tin bên dưới" Style="{StaticResource SubHeaderStyle}"/>
             </StackPanel>
 
-            <!-- Login Form -->
-            <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <!-- Email Field -->
-                <Label Content="Email" Target="{Binding ElementName=txtEmail}"/>
-                <TextBox x:Name="txtEmail" />
+            <!-- Registration Form -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Email Field -->
+                    <Label Content="Email*" Target="{Binding ElementName=txtEmail}"/>
+                    <TextBox x:Name="txtEmail" />
 
-                <!-- Password Field -->
-                <Label Content="Mật khẩu" Target="{Binding ElementName=txtPassword}"/>
-                <PasswordBox x:Name="txtPassword" />
+                    <!-- Password Field -->
+                    <Label Content="Mật khẩu*" Target="{Binding ElementName=txtPassword}"/>
+                    <PasswordBox x:Name="txtPassword" />
 
+                    <!-- Confirm Password Field -->
+                    <Label Content="Xác thực mật khẩu*" Target="{Binding ElementName=txtConfirmPassword}"/>
+                    <PasswordBox x:Name="txtConfirmPassword" />
 
-                <!-- Login Button -->
-                <Button x:Name="btnLogin" Content="Đăng nhập" Click="BtnLogin_Click"/>
-            </StackPanel>
+                    <!-- Name Field -->
+                    <Label Content="Họ Tên*" Target="{Binding ElementName=txtName}"/>
+                    <TextBox x:Name="txtName" />
 
-            <!-- Footer -->
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Chưa có tài khoản? " VerticalAlignment="Center"/>
-                <TextBlock VerticalAlignment="Center">
-                    <Hyperlink TextDecorations="None" Click="SignUp_Click">Đăng kí</Hyperlink>
-                </TextBlock>
-            </StackPanel>
+                    <!-- Date of Birth Field -->
+                    <Label Content="Ngày sinh*" Target="{Binding ElementName=dpDateOfBirth}"/>
+                    <DatePicker x:Name="dpDateOfBirth" />
+
+                    <!-- Gender Field -->
+                    <Label Content="Giới tính" Margin="0,0,0,5"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <RadioButton x:Name="rbMale" Content="Nam" GroupName="Gender" IsChecked="True"/>
+                        <RadioButton x:Name="rbFemale" Content="Nữ" GroupName="Gender"/>
+                    </StackPanel>
+
+                    <!-- Register Button -->
+                    <Button x:Name="btnRegister" Content="Tạo tài khoản" Click="BtnRegister_Click"
+                            Margin="0,20,0,10"/>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Border>
 </Window>

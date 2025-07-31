@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BLL.Services;
 using DAL.Entities;
+using DAL.Utils;
 
 namespace GUI
 {
@@ -19,6 +20,8 @@ namespace GUI
     public partial class MainWindow : Window
     {
         private AccountService _accountService = new();
+        private RoleService _roleService = new();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,12 +44,37 @@ namespace GUI
                 return;
             }
 
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.CurrentUser = userAccount;
-            //this.Hide();
-            //mainWindow.ShowDialog();
-            //this.Show();
+            var role = _roleService.GetRoleById(account.RoleId);
+            if(role!.Name == RoleName.Admin)
+            {
+                AdminWindow adminWindow = new AdminWindow();
+                adminWindow.ShowDialog();
+            }
+            else if (role.Name == RoleName.Manager)
+            {
+                ManagerWindow managerWindow = new ManagerWindow();
+                managerWindow.ShowDialog();
+            }
+            else if (role.Name == RoleName.Customer)
+            {
+                CustomerWindow customerWindow = new CustomerWindow();
+                customerWindow.ShowDialog();
+            }
+            else if (role.Name == RoleName.Doctor)
+            {
+                DoctorWindow doctorWindow = new DoctorWindow();
+                doctorWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Unknown role!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
+        private void SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            SigningUpWindow signingUpWindow = new SigningUpWindow();
+            signingUpWindow.ShowDialog();
         }
     }
 }

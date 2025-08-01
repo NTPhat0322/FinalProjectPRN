@@ -138,6 +138,7 @@
                             <DataGridTextColumn Header="Tên" Binding="{Binding Name}" Width="200"/>
                             <DataGridTextColumn Header="Giá" Binding="{Binding Price, StringFormat='{}{0:C}'}" Width="100"/>
                             <DataGridTextColumn Header="Mô tả" Binding="{Binding Description}" Width="*"/>
+                            <DataGridCheckBoxColumn Header="Đã xóa" Binding="{Binding IsDeleted}" Width="80"/>
                             <DataGridTemplateColumn Header="Hành động" Width="180">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

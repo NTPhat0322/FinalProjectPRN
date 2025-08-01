@@ -136,7 +136,7 @@ namespace GUI
             ServiceForm serviceForm = new ServiceForm();
             serviceForm.CurrentService = null;
             serviceForm.ShowDialog();
-
+            this.LoadServices();
         }
 
         private void TxtSearchService_TextChanged(object sender, TextChangedEventArgs e)
@@ -151,12 +151,50 @@ namespace GUI
 
         private void EditServiceButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var button = sender as Button;
+            var service = button.DataContext as Service;
+            
+            if (service != null)
+            {
+                if (service.IsDeleted)
+                {
+                    MessageBox.Show("Dịch vụ này đã bị xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                ServiceForm serviceForm = new ServiceForm();
+                serviceForm.CurrentService = service;
+                serviceForm.ShowDialog();
+                this.LoadServices();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dịch vụ để chỉnh sửa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void DeleteServiceButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var button = sender as Button;
+            var service = button.DataContext as Service;
+            
+            if(service != null)
+            {
+                if (service.IsDeleted)
+                {
+                    MessageBox.Show("Dịch vụ này đã bị xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                MessageBoxResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa dịch vụ '{service.Name}' không?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    _serviceService.Delete(service);
+                    LoadServices();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dịch vụ để xóa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SaveServiceButton_Click(object sender, RoutedEventArgs e)

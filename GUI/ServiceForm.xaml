@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Service Information" Height="502" Width="546"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="35"/>
@@ -51,20 +51,20 @@
 
             <!-- Header -->
             <TextBlock Grid.Row="0" x:Name="FormTitle" 
-                       Text="Add New Service" 
+                       Text="Thêm mới dịch vụ" 
                        FontSize="22" 
                        FontWeight="SemiBold" 
                        Margin="0,0,0,20"/>
 
             <!-- Form Content -->
             <StackPanel Grid.Row="1">
-                <Label Content="Service Name:"/>
+                <Label Content="Tên dịch vụ:"/>
                 <TextBox x:Name="txtServiceName"/>
 
-                <Label Content="Price:"/>
+                <Label Content="Giá:"/>
                 <TextBox x:Name="txtServicePrice" PreviewTextInput="NumberValidationTextBox"/>
 
-                <Label Content="Description:"/>
+                <Label Content="Mô tả:"/>
                 <TextBox x:Name="txtServiceDescription" 
                          Height="80" 
                          TextWrapping="Wrap" 
@@ -78,13 +78,13 @@
                         Orientation="Horizontal" 
                         HorizontalAlignment="Right">
                 <Button x:Name="btnSave" 
-                        Content="Save" 
+                        Content="Lưu" 
                         Click="BtnSave_Click" 
                         Background="#27ae60" 
                         Foreground="White"/>
 
                 <Button x:Name="btnCancel" 
-                        Content="Cancel" 
+                        Content="Hủy" 
                         Click="BtnCancel_Click" 
                         Background="#95a5a6" 
                         Foreground="White"/>

@@ -15,5 +15,21 @@ namespace BLL.Services
         {
             return _serviceRepository.GetAll();
         }
+        // Thêm dịch vụ mới
+        public void Add(Service service)
+        {
+            _serviceRepository.Add(service);
+        }
+        // Cập nhật dịch vụ
+        public bool Update(Service service)
+        {
+            return _serviceRepository.Update(service);
+        }
+
+        // Xóa dịch vụ
+        public bool Delete(Service service)
+        {
+            return _serviceRepository.Delete(service);
+        }
     }
 }

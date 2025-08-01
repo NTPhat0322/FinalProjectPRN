@@ -40,6 +40,7 @@ namespace DAL.Repositories
             tmp.Name = role.Name;
             tmp.IsDeleted = role.IsDeleted;
             _context.Roles.Update(tmp);
+            _context.SaveChanges();
             return true;
         }
 
@@ -47,7 +48,8 @@ namespace DAL.Repositories
         {
             Role? tmp = _context.Roles.FirstOrDefault(a => a.Id == role.Id);
             if (tmp is null) return false;
-            _context.Roles.Remove(tmp);
+            tmp.IsDeleted = true; // Soft delete
+            _context.Roles.Update(tmp);
             _context.SaveChanges();
             return true;
         }

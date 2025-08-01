@@ -62,7 +62,8 @@ namespace DAL.Repositories
         {
             Account? tmp = _context.Accounts.FirstOrDefault(a => a.Id == account.Id);
             if (tmp is null) return false;
-            _context.Accounts.Remove(tmp);
+            tmp.IsDeleted = true; // Soft delete
+            _context.Accounts.Update(tmp);
             _context.SaveChanges();
             return true;
         }

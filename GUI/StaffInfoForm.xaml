@@ -1,0 +1,187 @@
+﻿<Window x:Class="GUI.StaffInfoForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Staff Information" Height="427" Width="510"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="10,20,10,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="0,5,0,5"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="White" CornerRadius="5" Margin="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="-90" 
+                              RenderingBias="Quality" ShadowDepth="2" 
+                              Opacity="0.2"/>
+        </Border.Effect>
+
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <TextBlock Grid.Row="0" x:Name="FormTitle" 
+                       Text="Add New Staff Information" 
+                       FontSize="22" 
+                       FontWeight="SemiBold" 
+                       Margin="0,0,0,20"/>
+
+            <!-- Form Content -->
+            <ScrollViewer Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Left Column -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
+                        <Label Content="Account:"/>
+                        <ComboBox x:Name="cmbAccount" 
+                                  DisplayMemberPath="Name" 
+                                  SelectedValuePath="Id"
+                                  IsEnabled="{Binding IsAccountSelectionEnabled}"/>
+                    </StackPanel>
+
+                    <!-- Right Column -->
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
+                        <Label Content="Department:"/>
+                        <ComboBox x:Name="cmbDepartment" 
+                                  DisplayMemberPath="Name" 
+                                  SelectedValuePath="Id"/>
+                    </StackPanel>
+
+                    <!-- Left Column -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,0">
+                        <Label Content="Degree:"/>
+                        <TextBox x:Name="txtDegree"/>
+                    </StackPanel>
+
+                    <!-- Right Column -->
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
+                        <Label Content="Years of Experience:"/>
+                        <TextBox x:Name="txtExperience" PreviewTextInput="NumberValidationTextBox"/>
+                    </StackPanel>
+
+                    <!-- Staff Information (Read Only) -->
+                    <Border Grid.Row="2" Grid.ColumnSpan="2"
+                            BorderBrush="#EEEEEE" 
+                            BorderThickness="1" 
+                            Margin="0,10,0,0"
+                            Padding="10"
+                            Background="#F9F9F9"
+                            x:Name="staffInfoPanel"
+                            Visibility="Collapsed">
+                        <StackPanel>
+                            <TextBlock Text="Staff Information" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="16" 
+                                       Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" 
+                                           Text="Name: " 
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,10,5"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" 
+                                           x:Name="txtStaffName" 
+                                           Text="Staff Name"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" 
+                                           Text="Email: " 
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,10,5"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" 
+                                           x:Name="txtStaffEmail" 
+                                           Text="staff@example.com"
+                                           Margin="0,0,0,5"/>
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" 
+                                           Text="Role: " 
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,10,5"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" 
+                                           x:Name="txtStaffRole" 
+                                           Text="Role"
+                                           Margin="0,0,0,5"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="2" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Right">
+                <Button x:Name="btnSave" 
+                        Content="Save" 
+                        Click="BtnSave_Click" 
+                        Background="#27ae60" 
+                        Foreground="White"/>
+
+                <Button x:Name="btnCancel" 
+                        Content="Cancel" 
+                        Click="BtnCancel_Click" 
+                        Background="#95a5a6" 
+                        Foreground="White"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -2,7 +2,11 @@
 using DAL.DTOs;
 using DAL.Entities;
 using DAL.Repositories;
+
+using Microsoft.EntityFrameworkCore.Storage;
+
 using System.Collections;
+
 
 namespace BLL.Services
 {
@@ -51,9 +55,50 @@ namespace BLL.Services
             return rs;
         }
 
+        public bool IsDepartmentInUse(int departmentId)
+        {
+            var staffInfos = _staffInfoRepository.GetAll();
+            return staffInfos.Any(s => s.DepartmentId == departmentId);
+        }
+        //update
+        public bool Update(StaffInformationDTO staffInfo)
+        {
+            StaffInfo? tmp = _staffInfoRepository.GetById(staffInfo.Id);
+            if (tmp is null) return false;
+            tmp.DepartmentId = staffInfo.DepartmentId;
+            tmp.Degree = staffInfo.Degree;
+            tmp.YearOfExperience = staffInfo.YearOfExperience;
+            return _staffInfoRepository.Update(tmp);
+        }
+        //delete
+        public bool Delete(int staffInfoId)
+        {
+            StaffInfo? staffInfo = _staffInfoRepository.GetById(staffInfoId);
+            if (staffInfo is null) return false;
+            return _staffInfoRepository.Delete(staffInfo);
+        }
+        public bool DeleteByAccountId(int accountId)
+        {
+            var staffInfos = _staffInfoRepository.GetAll();
+            var staffInfo = staffInfos.FirstOrDefault(s => s.AccountId == accountId);
+            if (staffInfo is null) return false;
+            return _staffInfoRepository.Delete(staffInfo);
+        }
+        //add
+        public bool Add(StaffInfo staffInfo)
+        {
+            if (staffInfo is null) return false;
+            if (_accountRepository.GetById(staffInfo.AccountId) is null) return false;
+            if (_departmentRepository.GetById(staffInfo.DepartmentId) is null) return false;
+            _staffInfoRepository.Add(staffInfo);
+            return true;
+        }
+
+
         public List<StaffInfo> GetAllStaff()
         {
             return _staffInfoRepository.GetAllStaff();
         }
+
     }
 }

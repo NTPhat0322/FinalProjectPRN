@@ -34,7 +34,7 @@ namespace GUI
                 this.Close();
                 return;
             }
-            txtWelcome.Text = $"Welcome {Account.Name}";
+            //txtWelcome.Text = $"Welcome {Account.Name}";
         }
 
 

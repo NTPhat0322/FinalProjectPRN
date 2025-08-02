@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Department Information" Height="286" Width="450"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="35"/>

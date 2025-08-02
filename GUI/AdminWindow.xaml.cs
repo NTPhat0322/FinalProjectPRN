@@ -223,6 +223,7 @@ namespace GUI
             DepartmentForm departmentForm = new DepartmentForm();
             departmentForm.CurrentDepartment = null;
             departmentForm.ShowDialog();
+            LoadDepartments();
         }
 
         private void DgDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -232,7 +233,29 @@ namespace GUI
 
         private void DeleteDepartmentButton_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var department = button.DataContext as Department;
 
+            if (department != null)
+            {
+                //confirm
+                MessageBoxResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa phòng ban '{department.Name}' không?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    //kiểm tra xem phòng ban có đang được sử dụng không
+                    if (_staffInfoService.IsDepartmentInUse(department.Id))
+                    {
+                        MessageBox.Show("Phòng ban này đang được sử dụng bởi nhân viên, không thể xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    _departmentService.Delete(department);
+                    LoadDepartments();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dịch vụ để xóa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SaveDepartmentButton_Click(object sender, RoutedEventArgs e)
@@ -252,7 +275,20 @@ namespace GUI
 
         private void EditDepartmentButton_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var department = button.DataContext as Department;
 
+            if (department != null)
+            {
+                DepartmentForm departmentForm = new DepartmentForm();
+                departmentForm.CurrentDepartment = department;
+                departmentForm.ShowDialog();
+                this.LoadDepartments();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dịch vụ để chỉnh sửa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SearchStaffButton_Click(object sender, RoutedEventArgs e)
@@ -283,6 +319,7 @@ namespace GUI
             StaffInfoForm staffInfoForm = new StaffInfoForm();
             staffInfoForm.CurrentStaffInformation = null;
             staffInfoForm.ShowDialog();
+            LoadStaffInfo();
         }
 
         private void DgStaffInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -292,7 +329,20 @@ namespace GUI
 
         private void EditStaffButton_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var staffInfo = button.DataContext as StaffInformationDTO;
 
+            if (staffInfo != null)
+            {
+                StaffInfoForm staffInfoForm = new StaffInfoForm();
+                staffInfoForm.CurrentStaffInformation = staffInfo;
+                staffInfoForm.ShowDialog();
+                this.LoadStaffInfo();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dịch vụ để chỉnh sửa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void DeleteStaffButton_Click(object sender, RoutedEventArgs e)

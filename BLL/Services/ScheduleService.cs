@@ -27,5 +27,11 @@ namespace BLL.Services
         {
             return _repo.Delete(scheduleId);
         }
+
+        public List<Schedule> GetByDoctor(int doctorId)
+        {
+            return _repo.GetSchedulesByDoctor(doctorId);
+        }
+
     }
 }

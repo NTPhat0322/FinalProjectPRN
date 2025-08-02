@@ -2,6 +2,7 @@
 using DAL.DTOs;
 using DAL.Entities;
 using DAL.Repositories;
+using System.Collections;
 
 namespace BLL.Services
 {
@@ -48,6 +49,11 @@ namespace BLL.Services
                 }
             }
             return rs;
+        }
+
+        public List<StaffInfo> GetAllStaff()
+        {
+            return _staffInfoRepository.GetAllStaff();
         }
     }
 }

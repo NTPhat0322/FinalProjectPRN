@@ -37,13 +37,6 @@ namespace GUI
             txtWelcome.Text = $"Welcome {Account.Name}";
         }
 
-        private void btnService_Click(object sender, RoutedEventArgs e)
-        {
-            if (Account == null) return;
-            ServiceWindow serviceWindow = new ServiceWindow();
-            serviceWindow.Account = Account;
-            serviceWindow.ShowDialog();
-        }
 
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
@@ -73,6 +66,14 @@ namespace GUI
 
                 this.Close();
             }
+        }
+
+        private void btnStaff_Click(object sender, RoutedEventArgs e)
+        {
+            if (Account == null) return;
+            StaffsWindow stafWindow = new StaffsWindow();
+            stafWindow.Account = Account;
+            stafWindow.ShowDialog();
         }
     }
 }

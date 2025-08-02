@@ -83,7 +83,7 @@
         <!-- Content -->
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30">
             <WrapPanel HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Service" Name="btnService" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnService_Click" />
+                <Button Content="View Staff" Name="btnStaff" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnStaff_Click" />
                 <Button Content="Schedule" Name="btnSchedule" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnSchedule_Click"/>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center" Margin="0,10">

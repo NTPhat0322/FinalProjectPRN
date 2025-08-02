@@ -38,5 +38,15 @@ namespace DAL.Repositories
             _context.Schedules.Update(schedule);
             return _context.SaveChanges() > 0;
         }
+
+        public List<Schedule> GetSchedulesByDoctor(int doctorId)
+        {
+            return _context.Schedules
+                           .Include(s => s.Account)   
+                           .Include(s => s.Service)
+                           .Where(s => s.DoctorId == doctorId && !s.IsDeleted)
+                           .OrderBy(s => s.ScheduleTime)
+                           .ToList();
+        }
     }
 }

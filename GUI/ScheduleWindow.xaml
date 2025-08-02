@@ -21,15 +21,15 @@
                   IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                <DataGridTextColumn Header="Service" Binding="{Binding Service.Name}" Width="150"/>
-                <DataGridTextColumn Header="Schedule Time" Binding="{Binding ScheduleTime, StringFormat='dd/MM/yyyy HH:mm'}" Width="200"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Service.Price, StringFormat='{}{0:N0}'}" Width="100"/>
-                <DataGridTextColumn Header="Account" Binding="{Binding Account.Name}" Width="150"/>
+                <DataGridTextColumn Header="Dịch vụ" Binding="{Binding Service.Name}" Width="150"/>
+                <DataGridTextColumn Header="Thời gian" Binding="{Binding ScheduleTime, StringFormat='dd/MM/yyyy HH:mm'}" Width="200"/>
+                <DataGridTextColumn Header="Giá" Binding="{Binding Service.Price, StringFormat='{}{0:N0}'}" Width="100"/>
+                <DataGridTextColumn Header="Tên" Binding="{Binding Account.Name}" Width="150"/>
 
-                <DataGridTemplateColumn Header="Actions" Width="100">
+                <DataGridTemplateColumn Header="Hành vi" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Delete" 
+                            <Button Content="Xóa" 
                         Background="#F87171" Foreground="White" 
                         BorderBrush="Transparent" Padding="5,2"
                         Tag="{Binding Id}"
@@ -45,24 +45,24 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0" >
                 <!-- Chọn Service -->
                 <StackPanel Margin="0,0,15,0">
-                    <TextBlock Text="Service:" FontWeight="Bold"/>
+                    <TextBlock Text="Dịch vụ:" FontWeight="Bold"/>
                     <ComboBox x:Name="cbService" Width="180" Height="30" DisplayMemberPath="Name"/>
                 </StackPanel>
 
                 <!-- Chọn ngày -->
                 <StackPanel Margin="0,0,15,0">
-                    <TextBlock Text="Date:" FontWeight="Bold"/>
+                    <TextBlock Text="Ngày:" FontWeight="Bold"/>
                     <DatePicker x:Name="dpDate" Width="140" Height="30"/>
                 </StackPanel>
 
                 <!-- Chọn giờ -->
                 <StackPanel Margin="0,0,15,0">
-                    <TextBlock Text="Time (HH:mm):" FontWeight="Bold"/>
+                    <TextBlock Text="Thời gian (HH:mm):" FontWeight="Bold"/>
                     <TextBox x:Name="txtTime" Width="80" Height="30" ToolTip="Enter time as HH:mm"/>
                 </StackPanel>
 
                 <!-- Button thêm -->
-                <Button x:Name="btnAdd" Content="Add Schedule" Width="130" Height="40"
+                <Button x:Name="btnAdd" Content="Thêm" Width="130" Height="40"
                         Background="#22C55E" Foreground="White" FontWeight="Bold"
                         Click="btnAdd_Click" Margin="0,0,0,0"/>
             </StackPanel>

@@ -75,7 +75,7 @@
         <DockPanel Grid.Row="0" Background="White" VerticalAlignment="Center" LastChildFill="True" Margin="0,0,0,2"
                    Effect="{StaticResource DropShadowEffect}">
             <TextBlock x:Name="txtWelcome"
-                       Text="Welcome Customer"
+                       Text="Chào mừng khách hàng"
                        FontSize="24" FontWeight="Bold" Foreground="#0EA5E9"
                        VerticalAlignment="Center" Margin="20,0"/>
         </DockPanel>
@@ -83,17 +83,17 @@
         <!-- Content -->
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30">
             <WrapPanel HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="View Staff" Name="btnStaff" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnStaff_Click" />
-                <Button Content="Schedule" Name="btnSchedule" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnSchedule_Click"/>
+                <Button Content="Xem nhân viên" Name="btnStaff" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnStaff_Click" />
+                <Button Content="Lịch" Name="btnSchedule" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnSchedule_Click"/>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center" Margin="0,10">
-                <Button Content="Profile" Name="btnProfile" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnProfile_Click" />
+                <Button Content="Hồ sơ" Name="btnProfile" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnProfile_Click" />
             </WrapPanel>
         </StackPanel>
 
         <!-- Footer -->
         <StackPanel Grid.Row="2" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Log out" Name="btnLogout" Width="160" Height="45"
+            <Button Content="Đăng xuất" Name="btnLogout" Width="160" Height="45"
                     Style="{StaticResource LogoutButtonStyle}" Click="btnLogout_Click" />
         </StackPanel>
     </Grid>

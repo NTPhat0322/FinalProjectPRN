@@ -62,7 +62,7 @@
 
             <!-- Header -->
             <TextBlock Grid.Row="0" x:Name="FormTitle" 
-                       Text="Add New Staff Information" 
+                       Text="Thêm mới thông tin nhân viên" 
                        FontSize="22" 
                        FontWeight="SemiBold" 
                        Margin="0,0,0,20"/>
@@ -82,7 +82,7 @@
 
                     <!-- Left Column -->
                     <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
-                        <Label Content="Account:"/>
+                        <Label Content="Tài khoản:"/>
                         <ComboBox x:Name="cmbAccount" 
                                   DisplayMemberPath="Name" 
                                   SelectedValuePath="Id"
@@ -91,7 +91,7 @@
 
                     <!-- Right Column -->
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
-                        <Label Content="Department:"/>
+                        <Label Content="Phòng ban:"/>
                         <ComboBox x:Name="cmbDepartment" 
                                   DisplayMemberPath="Name" 
                                   SelectedValuePath="Id"/>
@@ -99,13 +99,13 @@
 
                     <!-- Left Column -->
                     <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,0">
-                        <Label Content="Degree:"/>
+                        <Label Content="Bằng cấp:"/>
                         <TextBox x:Name="txtDegree"/>
                     </StackPanel>
 
                     <!-- Right Column -->
                     <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
-                        <Label Content="Years of Experience:"/>
+                        <Label Content="Năm kinh nghiệm:"/>
                         <TextBox x:Name="txtExperience" PreviewTextInput="NumberValidationTextBox"/>
                     </StackPanel>
 

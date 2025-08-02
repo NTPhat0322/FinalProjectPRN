@@ -7,7 +7,7 @@
 
     <Border CornerRadius="8" Padding="20" Margin="20" Background="White" BorderBrush="#E2E8F0" BorderThickness="1">
         <StackPanel>
-            <TextBlock Text="Profile Information" FontSize="22" FontWeight="Bold" Foreground="#0EA5E9" Margin="0,0,0,20"/>
+            <TextBlock Text="Thông tin" FontSize="22" FontWeight="Bold" Foreground="#0EA5E9" Margin="0,0,0,20"/>
 
             <!-- Full Name -->
             <Grid Margin="0,0,0,10">
@@ -15,7 +15,7 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Full Name:" Grid.Column="0" FontWeight="Bold"/>
+                <TextBlock Text="Tên:" Grid.Column="0" FontWeight="Bold"/>
                 <TextBox x:Name="txtName" Grid.Column="1" Height="28"/>
             </Grid>
 
@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Email:" Grid.Column="0" FontWeight="Bold"/>
+                <TextBlock Text="Email:" Grid.Column="0" FontWeight="Bold" Height="28" VerticalAlignment="Top"/>
                 <TextBox x:Name="txtEmail" Grid.Column="1" Height="28" IsReadOnly="True"/>
             </Grid>
 
@@ -35,7 +35,7 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Gender:" Grid.Column="0" FontWeight="Bold"/>
+                <TextBlock Text="Giới tính:" Grid.Column="0" FontWeight="Bold"/>
                 <ComboBox x:Name="cbGender" Grid.Column="1" Height="28">
                     <ComboBoxItem Content="Male"/>
                     <ComboBoxItem Content="Female"/>
@@ -49,7 +49,7 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Date of Birth:" Grid.Column="0" FontWeight="Bold"/>
+                <TextBlock Text="Ngày sinh:" Grid.Column="0" FontWeight="Bold"/>
                 <DatePicker x:Name="dpDOB" Grid.Column="1" Height="28"/>
             </Grid>
 
@@ -59,16 +59,16 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Role:" Grid.Column="0" FontWeight="Bold"/>
+                <TextBlock Text="Vai trò:" Grid.Column="0" FontWeight="Bold"/>
                 <TextBox x:Name="txtRole" Grid.Column="1" Height="28" IsReadOnly="True"/>
             </Grid>
 
             <!-- Buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                <Button Content="Update" Width="100" Height="35"
+                <Button Content="Cập nhật" Width="100" Height="35"
                         Background="#22C55E" Foreground="White" BorderBrush="Transparent"
                         FontWeight="Bold" Click="btnUpdate_Click"/>
-                <Button Content="Close" Width="100" Height="35"
+                <Button Content="Đóng" Width="100" Height="35"
                         Background="#F87171" Foreground="White" BorderBrush="Transparent"
                         FontWeight="Bold" Click="btnClose_Click"/>
             </StackPanel>

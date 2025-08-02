@@ -60,10 +60,6 @@ namespace GUI
                                          MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                
-                MainWindow loginWindow = new MainWindow();
-                loginWindow.Show();
-
                 this.Close();
             }
         }

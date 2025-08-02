@@ -58,11 +58,13 @@ namespace GUI
             else if (role.Name == RoleName.Customer)
             {
                 CustomerWindow customerWindow = new CustomerWindow();
+                customerWindow.Account = account;
                 customerWindow.ShowDialog();
             }
             else if (role.Name == RoleName.Doctor)
             {
                 DoctorWindow doctorWindow = new DoctorWindow();
+                doctorWindow.DoctorAccount = account;
                 doctorWindow.ShowDialog();
             }
             else

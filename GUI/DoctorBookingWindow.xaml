@@ -1,0 +1,68 @@
+﻿<Window x:Class="GUI.DoctorBookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Đặt lịch bác sĩ" Height="430" Width="600"
+        WindowStartupLocation="CenterScreen" Background="#F8FAFC" ResizeMode="NoResize" WindowStyle="None">
+    <Border CornerRadius="12" Background="#F8FAFC" BorderBrush="#0EA5E9" BorderThickness="1" Padding="0" SnapsToDevicePixels="True" Loaded="Window_Loaded">
+        <Grid>
+            <!-- Custom Title Bar -->
+            <DockPanel LastChildFill="False" Height="44" Background="#0EA5E9" VerticalAlignment="Top">
+                <TextBlock Text="Đặt lịch bác sĩ" Foreground="White" FontWeight="Bold" FontSize="18"
+                           VerticalAlignment="Center" Margin="20,0,0,0" DockPanel.Dock="Left"/>
+                <Button Width="32" Height="32" Margin="0,6,10,6" DockPanel.Dock="Right"
+                        Background="Transparent" BorderBrush="{x:Null}" Cursor="Hand"
+                        ToolTip="Đóng" Click="BtnClose_Click">
+                    <Path Data="M6,6 L18,18 M6,18 L18,6" Stroke="White" StrokeThickness="2" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Button>
+            </DockPanel>
+
+            <Grid Margin="30,54,30,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Customer Name -->
+                <TextBlock Text="Tên khách hàng:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0EA5E9"/>
+                <TextBox x:Name="txtCustomerName" Grid.Row="0" Grid.Column="1" IsReadOnly="True" Margin="5" Background="#F1F5F9" BorderBrush="#0EA5E9"/>
+
+                <!-- Gender -->
+                <TextBlock Text="Giới tính:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0EA5E9"/>
+                <TextBox x:Name="txtGender" Grid.Row="1" Grid.Column="1" IsReadOnly="True" Margin="5" Background="#F1F5F9" BorderBrush="#0EA5E9"/>
+
+                <!-- Service -->
+                <TextBlock Text="Dịch vụ:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0EA5E9"/>
+                <ComboBox x:Name="cbService" Grid.Row="2" Grid.Column="1" Margin="5" DisplayMemberPath="Name" SelectedValuePath="Id"
+                          Background="#F1F5F9" BorderBrush="#0EA5E9"/>
+
+                <!-- Doctor -->
+                <TextBlock Text="Bác sĩ:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0EA5E9"/>
+                <TextBox x:Name="txtDoctorName" Grid.Row="3" Grid.Column="1" IsReadOnly="True" Margin="5"
+                          Background="#F1F5F9" BorderBrush="#0EA5E9"/>
+
+                <!-- Date -->
+                <TextBlock Text="Ngày:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0EA5E9"/>
+                <DatePicker x:Name="dpDate" Grid.Row="4" Grid.Column="1" Margin="5" Background="#F1F5F9" BorderBrush="#0EA5E9"/>
+
+                <!-- Time -->
+                <TextBlock Text="Giờ (HH:mm):" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0EA5E9"/>
+                <TextBox x:Name="txtTime" Grid.Row="5" Grid.Column="1" Margin="5" Background="#F1F5F9" BorderBrush="#0EA5E9"/>
+
+                <!-- Confirm button -->
+                <Button Content="Xác nhận" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="5,18,5,0" Background="#0EA5E9" Foreground="White" FontWeight="Bold" FontSize="16"
+                        Height="44" BorderThickness="0" Cursor="Hand"
+                        Click="BtnConfirm_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

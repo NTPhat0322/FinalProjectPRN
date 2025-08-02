@@ -2,7 +2,11 @@
 using DAL.DTOs;
 using DAL.Entities;
 using DAL.Repositories;
+
 using Microsoft.EntityFrameworkCore.Storage;
+
+using System.Collections;
+
 
 namespace BLL.Services
 {
@@ -88,6 +92,12 @@ namespace BLL.Services
             if (_departmentRepository.GetById(staffInfo.DepartmentId) is null) return false;
             _staffInfoRepository.Add(staffInfo);
             return true;
+        }
+
+
+        public List<StaffInfo> GetAllStaff()
+        {
+            return _staffInfoRepository.GetAllStaff();
         }
 
     }

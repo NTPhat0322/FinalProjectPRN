@@ -1,9 +1,11 @@
-﻿using System;
+﻿using DAL.Entities;
+using DAL.Utils;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Entities;
 
 namespace DAL.Repositories
 {
@@ -52,6 +54,16 @@ namespace DAL.Repositories
             _context.StaffInfos.Remove(tmp);
             _context.SaveChanges();
             return true;
+        }
+
+        public List<StaffInfo> GetAllStaff()
+        {
+            return _context.StaffInfos
+                           .Include(s => s.Account)
+                               .ThenInclude(a => a.Role)
+                           .Include(s => s.Department)
+                           .Where(s => s.Account.Role.Name == RoleName.Doctor && !s.Account.IsDeleted)
+                           .ToList();
         }
     }
 }

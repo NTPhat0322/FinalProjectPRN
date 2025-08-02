@@ -1,0 +1,35 @@
+﻿<Window x:Class="GUI.StaffsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Danh sách Staff" Height="500" Width="900"
+        WindowStartupLocation="CenterScreen" Background="#F8FAFC" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <DataGrid x:Name="dgStaffs" AutoGenerateColumns="False" 
+          CanUserAddRows="False" IsReadOnly="True"
+          HeadersVisibility="Column" 
+          RowHeight="35" FontSize="14"
+          AlternatingRowBackground="#F1F5F9"
+          GridLinesVisibility="None">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
+                <DataGridTextColumn Header="Tên" Binding="{Binding Account.Name}" Width="*"/>
+                <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Account.Email}"  />
+                <DataGridTextColumn Header="Bằng cấp" Binding="{Binding Degree}" Width="*"/>
+                <DataGridTextColumn Header="Kinh nghiệm" Binding="{Binding YearOfExperience}" Width="100"/>
+                <DataGridTextColumn Header="Phòng ban" Binding="{Binding Department.Name}" Width="*"/>
+
+                <DataGridTemplateColumn Header="Đặt lịch" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Đặt"
+                    Tag="{Binding Account.Id}"
+                    Click="BtnBookDoctor_Click"
+                    Background="#0EA5E9" Foreground="White"
+                    Padding="5" Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

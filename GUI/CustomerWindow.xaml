@@ -5,8 +5,96 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="CustomerWindow" Height="450" Width="800">
+        Title="CustomerWindow" Height="520" Width="820"
+        WindowStartupLocation="CenterScreen"
+        Background="#F1F5F9" Loaded="Window_Loaded">
+
+    <!-- Resource chứa style nút màu xanh -->
+    <Window.Resources>
+        <!-- Style nút chính -->
+        <Style x:Key="BlueButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0EA5E9"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="4" Opacity="0.3"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#0284C7"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="3" BlurRadius="6" Opacity="0.4"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style nút đăng xuất -->
+        <Style x:Key="LogoutButtonStyle" TargetType="Button" BasedOn="{StaticResource BlueButtonStyle}">
+            <Setter Property="Background" Value="#F87171"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#DC2626"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Define DropShadowEffect as a reusable resource -->
+        <DropShadowEffect x:Key="DropShadowEffect" ShadowDepth="2" BlurRadius="4" Opacity="0.3"/>
+    </Window.Resources>
+
+    <!-- Nội dung chính -->
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Content -->
+            <RowDefinition Height="70"/>
+            <!-- Footer -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <DockPanel Grid.Row="0" Background="White" VerticalAlignment="Center" LastChildFill="True" Margin="0,0,0,2"
+                   Effect="{StaticResource DropShadowEffect}">
+            <TextBlock x:Name="txtWelcome"
+                       Text="Welcome Customer"
+                       FontSize="24" FontWeight="Bold" Foreground="#0EA5E9"
+                       VerticalAlignment="Center" Margin="20,0"/>
+        </DockPanel>
+
+        <!-- Content -->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30">
+            <WrapPanel HorizontalAlignment="Center" Margin="0,10">
+                <Button Content="View Staff" Name="btnStaff" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnStaff_Click" />
+                <Button Content="Schedule" Name="btnSchedule" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnSchedule_Click"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center" Margin="0,10">
+                <Button Content="Profile" Name="btnProfile" Style="{StaticResource BlueButtonStyle}" Margin="15" Width="240" Height="55" Click="btnProfile_Click" />
+            </WrapPanel>
+        </StackPanel>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Log out" Name="btnLogout" Width="160" Height="45"
+                    Style="{StaticResource LogoutButtonStyle}" Click="btnLogout_Click" />
+        </StackPanel>
     </Grid>
 </Window>

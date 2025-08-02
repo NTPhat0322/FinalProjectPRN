@@ -15,5 +15,19 @@ namespace BLL.Services
         {
             return _departmentRepository.GetAll();
         }
+        public void Add(Department department)
+        {
+            _departmentRepository.Add(department);
+        }
+        //update
+        public bool Update(Department department)
+        {
+            return _departmentRepository.Update(department);
+        }
+        //delete
+        public bool Delete(Department department)
+        {
+            return _departmentRepository.Delete(department);
+        }
     }
 }
